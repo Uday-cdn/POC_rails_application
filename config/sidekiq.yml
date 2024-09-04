@@ -1,0 +1,32 @@
+:concurrency: 5
+
+:scheduler:
+  :schedule:
+    example_job:
+      cron: "*/1 * * * *"   # Every 1 minute
+      class: "ExampleJob"
+    birthday_reminder_job:
+      cron: "*/5 * * * *"   # Every 5 minutes
+      class: "BirthdayReminderJob"  
+    basic_job:
+      cron: "*/1 * * * *"   # Every 1 minutes
+      class: "BasicJob"
+    argument_job:
+      cron: "*/5 * * * *"   # Every 5 minutes
+      class: "ArgumentJob"
+      args:
+        - "Alice"  # Example name
+        - 3        # Example count
+    recurring_job:
+      cron: "0 16 * * *"   # Daily at 4 PM
+      class: "RecurringJob"
+    error_handling_job:
+      cron: "*/30 * * * *"   # Every 30 minutes
+      class: "ErrorHandlingJob"
+                    
+
+:queues:
+  - default
+
+:redis:
+  :url: redis://redis:6379/0
